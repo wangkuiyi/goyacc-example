@@ -13,5 +13,5 @@ This example adds more topics to Sugu's example, including:
 To build the run this example, type the following command:
 
 ```bash
-goyacc a.y && go test -v
+goyacc phonenumber.y && go test -v
 ```
