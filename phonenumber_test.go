@@ -1,8 +1,9 @@
 package exampleparser
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func parse(pn string) *astPhoneNumber {
@@ -12,8 +13,13 @@ func parse(pn string) *astPhoneNumber {
 }
 
 func TestParse(t *testing.T) {
-	fmt.Printf("%++v\n", parse("123-456-7890"))
-	fmt.Printf("%++v\n", parse("123 456 7890"))
-	fmt.Printf("%++v\n", parse("(123)456-7890"))
-	fmt.Printf("%++v\n", parse("(123)456 7890"))
+	x := &astPhoneNumber{
+		area:  "123",
+		part1: "456",
+		part2: "7890",
+	}
+	assert.Equal(t, x, parse("123 456 7890"))
+	assert.Equal(t, x, parse("123-456-7890"))
+	assert.Equal(t, x, parse("(123)456 7890"))
+	assert.Equal(t, x, parse("(123)456-7890"))
 }
